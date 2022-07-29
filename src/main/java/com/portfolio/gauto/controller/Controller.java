@@ -5,6 +5,7 @@ import com.portfolio.gauto.entity.Persona;
 import com.portfolio.gauto.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @Autowired IPersonaService PersoServ;
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/nueva/persona")
-    public void agregarPersona(@RequestBody Persona pers){
+    public String agregarPersona(@RequestBody Persona pers){
     PersoServ.savePersona(pers);
+    return "La persona fue creada exitosamente";
     }
     
     @GetMapping("/ver/personas")
@@ -33,11 +36,14 @@ public class Controller {
         return PersoServ.getPersonas();
     }
     
-    @DeleteMapping("/personas/delete/persona/{id}")
-    public void borrarPersona(@PathVariable Long id){
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/persona/{id}")
+    public String borrarPersona(@PathVariable Long id){
         PersoServ.deletePersona(id);
+        return "La persona fue eliminada de manera exitosa";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/persona/{id}")
     public Persona editPersona(@PathVariable Long id,
                                 @RequestParam( "nombre") String nuevoNombre,
