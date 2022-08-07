@@ -19,6 +19,11 @@ public class Skill {
    private String fotoSkill;
    private int porcentaje;
 
+    public Skill() {
+    }
+   
+   
+
     public Skill(String nombreSkill, String fotoSkill, int porcentaje) {
         this.nombreSkill = nombreSkill;
         this.fotoSkill = fotoSkill;

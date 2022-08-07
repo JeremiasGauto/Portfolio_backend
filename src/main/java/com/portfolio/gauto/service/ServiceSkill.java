@@ -44,7 +44,12 @@ public class ServiceSkill implements IserviceSkill {
       return skill;
     }
     
-    
+    public boolean existsById(Long id){
+    return rSkill.existsById(id);
+    }
+    public Optional<Skill> getOne(Long id){
+        return rSkill.findById(id);
+    }
     
     
     
