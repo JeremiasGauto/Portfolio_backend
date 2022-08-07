@@ -4,15 +4,13 @@
  */
 package com.portfolio.gauto.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author EXE
- */
-public class Skills {
+@Entity
+public class Skill {
     
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +19,7 @@ public class Skills {
    private String fotoSkill;
    private int porcentaje;
 
-    public Skills(String nombreSkill, String fotoSkill, int porcentaje) {
+    public Skill(String nombreSkill, String fotoSkill, int porcentaje) {
         this.nombreSkill = nombreSkill;
         this.fotoSkill = fotoSkill;
         this.porcentaje = porcentaje;
