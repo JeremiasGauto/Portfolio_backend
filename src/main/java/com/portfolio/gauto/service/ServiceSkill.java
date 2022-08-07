@@ -15,29 +15,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class ServiceSkill {
+public class ServiceSkill implements IserviceSkill {
     
     @Autowired
     RSkill rSkill;
     
     
-    public List<Skill> list(){
+ 
+
+    @Override
+    public List<Skill> getSkills() {
         return rSkill.findAll();
-    
     }
-    
-     public Optional<Skill> getOne (Long id){
-        return rSkill.findById(id);
-    }
-    
-   
-    
-    public void save(Skill skill){
+
+    @Override
+    public void saveSkill(Skill skill) {
         rSkill.save(skill);
     }
-    
-    public void delete(Long id){
-        rSkill.deleteById(id);
+
+    @Override
+    public void deleteSkill(Long Id) {
+        rSkill.deleteById(Id);
+    }
+
+    @Override
+    public Skill findSkill(Long Id) {
+       Skill skill= rSkill.findById(Id).orElse(null);
+      return skill;
     }
     
     
