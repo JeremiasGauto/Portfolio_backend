@@ -43,23 +43,36 @@ public class Controller {
         return "La persona fue eliminada de manera exitosa";
     }
     
+<<<<<<< HEAD
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/persona/{id}")
     public Persona editPersona(@PathVariable Long id,
                                 @RequestParam( "nombre") String nuevoNombre,
                                 @RequestParam( "apellido") String nuevoApellido,
                                 @RequestParam( "img") String nuevaImg){
+=======
+     @PutMapping("/edit/persona/{id}")
+    public Persona editPersona(@PathVariable Long id, 
+            @RequestParam( "nombre") String nuevoNombre, 
+            @RequestParam( "apellido") String nuevoApellido, 
+            @RequestParam( "img") String nuevaImg,
+            @RequestParam("acercaDe") String nuevoAcercaDe,
+            @RequestParam("bannerPersonal") String nuevoBanner){
+>>>>>>> features
     
         Persona persona= PersoServ.findPersona(id);
         
         persona.setNombre(nuevoNombre);
         persona.setApellido(nuevoApellido);
         persona.setImg(nuevaImg);
+	persona.setAcercaDe(nuevoAcercaDe);
+        persona.setBannerPersonal(nuevoBanner);
          
         PersoServ.savePersona(persona);
         
         return persona;
     };
+   
     
      @GetMapping("/traer/perfil")
     public Persona findPersona(){
