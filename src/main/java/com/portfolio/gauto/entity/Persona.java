@@ -30,4 +30,6 @@ public class Persona {
     @Size(min =1, max=50, message="Por favor ingrese un campo valido")
     private String img;
     
+    private String acercaDe;
+    
 }
