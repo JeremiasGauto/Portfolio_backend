@@ -23,6 +23,56 @@ public class Proyecto {
     private Date fecha;
     private String descripcionProyecto;
     private String imgProyecto;
+
+    public Proyecto() {
+    }
+
+    public Proyecto(String NombreProyecto, Date fecha, String descripcionProyecto, String imgProyecto) {
+        this.NombreProyecto = NombreProyecto;
+        this.fecha = fecha;
+        this.descripcionProyecto = descripcionProyecto;
+        this.imgProyecto = imgProyecto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombreProyecto() {
+        return NombreProyecto;
+    }
+
+    public void setNombreProyecto(String NombreProyecto) {
+        this.NombreProyecto = NombreProyecto;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDescripcionProyecto() {
+        return descripcionProyecto;
+    }
+
+    public void setDescripcionProyecto(String descripcionProyecto) {
+        this.descripcionProyecto = descripcionProyecto;
+    }
+
+    public String getImgProyecto() {
+        return imgProyecto;
+    }
+
+    public void setImgProyecto(String imgProyecto) {
+        this.imgProyecto = imgProyecto;
+    }
     
     
     
