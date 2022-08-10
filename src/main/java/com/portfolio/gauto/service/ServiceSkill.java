@@ -29,8 +29,10 @@ public class ServiceSkill implements IserviceSkill {
     }
 
     @Override
-    public void saveSkill(Skill skill) {
-        rSkill.save(skill);
+    public Skill saveSkill(Skill skill) {
+       Skill skilledit= rSkill.save(skill);
+       return skilledit;
+        
     }
 
     @Override

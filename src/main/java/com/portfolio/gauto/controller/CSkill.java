@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins ="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("skill")
 
 public class CSkill {
@@ -43,22 +43,11 @@ public ResponseEntity<List<Skill>> listSkill(){
     }
 
 
-@PutMapping("/edit/skill/{id}")
-    public Skill editSkill(@PathVariable Long id,
-                                @RequestParam( "nombreSkill") String nuevoNombre,
-                                @RequestParam( "fotoSkill") String nuevaFoto,
-                                @RequestParam( "porcentaje") Integer nuevoPorcentaje){
-    
-        Skill skill= serviceSkill.findSkill(id);
-        
-        skill.setNombreSkill(nuevoNombre);
-        skill.setFotoSkill(nuevaFoto);
-        skill.setPorcentaje(nuevoPorcentaje);
-         
-        serviceSkill.saveSkill(skill);
-        
-        return skill;
-    };
+@PutMapping("/edit")
+    public ResponseEntity<Skill>editarSkill(@RequestBody Skill skill){
+        Skill updateSkill=serviceSkill.saveSkill(skill);
+        return new ResponseEntity<>(updateSkill, HttpStatus.OK);
+    }
     
     @DeleteMapping("/delete/skill/{id}")
     public void deleteSkill(@PathVariable Long id){

@@ -25,8 +25,9 @@ public class ServiceProyecto implements Iproyecto{
     }
 
     @Override
-    public void saveProyecto(Proyecto proyecto) {
-        rProyecto.save(proyecto);
+    public Proyecto saveProyecto(Proyecto proyecto) {
+        Proyecto proyectoEdit= rProyecto.save(proyecto);
+         return proyectoEdit;
     }
 
     @Override

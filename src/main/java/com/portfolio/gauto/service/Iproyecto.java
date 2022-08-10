@@ -15,7 +15,7 @@ public interface Iproyecto {
     
     public List <Proyecto>getProyecto();
     
-    public void saveProyecto(Proyecto proyecto);
+    public Proyecto saveProyecto(Proyecto proyecto);
     
     public void deleteProyecto(Long Id);
     

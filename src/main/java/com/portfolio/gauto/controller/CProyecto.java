@@ -45,24 +45,11 @@ public class CProyecto {
     }
     
     
-    @PutMapping("/edit/proyecto/{id}")
-    public Proyecto editProyecto(@PathVariable Long id,
-                                @RequestParam( "nombreProyecto") String nuevoNombre,
-                                @RequestParam( "fecha") Date nuevaFecha,
-                                @RequestParam( "descripcionProyecto") String nuevaDescripcion,
-                                @RequestParam( "imgProyecto") String nuevaImgProyecto){
-    
-        Proyecto proyecto= serviceProyecto.findProyecto(id);
-        
-        proyecto.setNombreProyecto(nuevoNombre);
-        proyecto.setFecha(nuevaFecha);
-        proyecto.setDescripcionProyecto(nuevaDescripcion);
-        proyecto.setImgProyecto(nuevaImgProyecto);
-         
-        serviceProyecto.saveProyecto(proyecto);
-        
-        return proyecto;
-    };
+    @PutMapping("/edit")
+    public ResponseEntity<Proyecto>editarProyecto(@RequestBody Proyecto proyecto){
+        Proyecto updateProyecto=serviceProyecto.saveProyecto(proyecto);
+        return new ResponseEntity<>(updateProyecto, HttpStatus.OK);
+    }
     
     
     @DeleteMapping("/delete/proyecto/{id}")
