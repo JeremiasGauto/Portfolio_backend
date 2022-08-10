@@ -19,15 +19,14 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String NombreProyecto;
-    @DateTimeFormat(pattern="dd/MM/yyyy")
-    private Date fecha;
+    private int fecha;
     private String descripcionProyecto;
     private String imgProyecto;
 
     public Proyecto() {
     }
 
-    public Proyecto(String NombreProyecto, Date fecha, String descripcionProyecto, String imgProyecto) {
+    public Proyecto(String NombreProyecto, int fecha, String descripcionProyecto, String imgProyecto) {
         this.NombreProyecto = NombreProyecto;
         this.fecha = fecha;
         this.descripcionProyecto = descripcionProyecto;
@@ -50,11 +49,11 @@ public class Proyecto {
         this.NombreProyecto = NombreProyecto;
     }
 
-    public Date getFecha() {
+    public int getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(int fecha) {
         this.fecha = fecha;
     }
 
