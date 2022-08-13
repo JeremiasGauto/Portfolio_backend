@@ -31,9 +31,16 @@ public class ServExperiencia {
         return rExperiencia.findByNombreE(nombreE);
     }
     
-    public void save(Experiencia expe){
-        rExperiencia.save(expe);
+    
+    public Experiencia saveExperiencia(Experiencia experiencia) {
+       Experiencia experienciaEdit= rExperiencia.save(experiencia);
+       return experienciaEdit;
+        
     }
+    
+    public Experiencia editarExperiencia(Experiencia experiencia){
+    return rExperiencia.save(experiencia); 
+            }
     
     public void delete(int id){
         rExperiencia.deleteById(id);

@@ -46,30 +46,17 @@ public class CExperiencia {
             return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST); 
     
         Experiencia experiencia = new Experiencia(dtoExp.getNombreE(),dtoExp.getDescripcionE());
-        servExperiencia.save(experiencia);
+        servExperiencia.saveExperiencia(experiencia);
         
         return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
           
     }
     
-    @PutMapping("/update/{id}")
-     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExperiencia dtoExp){
-         if(!servExperiencia.existsById(id))
-             return new ResponseEntity(new Mensaje("El Id no existe"), HttpStatus.BAD_REQUEST); 
-         if(servExperiencia.existsByNombreE(dtoExp.getNombreE())&& servExperiencia.getByNombreE(dtoExp.getNombreE()).get().getId() !=id)
-           return new ResponseEntity(new Mensaje("Esta experiencia ya existe"), HttpStatus.BAD_REQUEST);  
-       
-         if(StringUtils.isBlank(dtoExp.getNombreE()))
-            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);   
-       
-         Experiencia experiencia = servExperiencia.getOne(id).get();
-         experiencia.setNombreE(dtoExp.getNombreE());
-         experiencia.setDescripcionE((dtoExp.getDescripcionE()));
-         
-         servExperiencia.save(experiencia);
-         
-         return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);   
-     }  
+    @PutMapping("/edit")
+    public ResponseEntity<Experiencia>editarExperiencia(@RequestBody Experiencia experiencia){
+        Experiencia updateExperiencia=servExperiencia.editarExperiencia(experiencia);
+        return new ResponseEntity<>(updateExperiencia, HttpStatus.OK);
+    }
      
      @DeleteMapping("/delete/{id}")
      public ResponseEntity<?> delete(@PathVariable("id")int id){
