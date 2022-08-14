@@ -5,6 +5,8 @@ import com.portfolio.gauto.entity.Persona;
 import com.portfolio.gauto.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,28 +47,13 @@ public class Controller {
     
 
 
-     @PutMapping("/edit/persona/{id}")
-    public Persona editPersona(@PathVariable Long id, 
-            @RequestParam( "nombre") String nuevoNombre, 
-            @RequestParam( "apellido") String nuevoApellido, 
-            @RequestParam( "img") String nuevaImg,
-            @RequestParam("acercaDe") String nuevoAcercaDe,
-            @RequestParam("bannerPersonal") String nuevoBanner){
-
+  
     
-        Persona persona= PersoServ.findPersona(id);
-        
-        persona.setNombre(nuevoNombre);
-        persona.setApellido(nuevoApellido);
-        persona.setImg(nuevaImg);
-	persona.setAcercaDe(nuevoAcercaDe);
-        persona.setBannerPersonal(nuevoBanner);
-         
-        PersoServ.savePersona(persona);
-        
-        return persona;
-    };
-   
+    @PutMapping("/edit/persona")
+    public ResponseEntity<Persona>editarPersona(@RequestBody Persona persona){
+        Persona updatePersona=PersoServ.savePersona(persona);
+        return new ResponseEntity<>(updatePersona, HttpStatus.OK);
+    }
     
      @GetMapping("/traer/perfil")
     public Persona findPersona(){

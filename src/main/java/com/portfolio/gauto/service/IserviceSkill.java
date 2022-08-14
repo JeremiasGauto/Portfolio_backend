@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IserviceSkill {
     
-      public List <Skill>getSkills();
+    public List <Skill>getSkills();
     
     public Skill saveSkill(Skill skill);
     

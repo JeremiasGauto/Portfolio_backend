@@ -15,7 +15,7 @@ public interface IPersonaService {
     
     public List <Persona>getPersonas();
     
-    public void savePersona(Persona pers);
+    public Persona savePersona(Persona pers);
     
     public void deletePersona(Long Id);
     
