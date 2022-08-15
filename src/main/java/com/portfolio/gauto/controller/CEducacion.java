@@ -65,34 +65,18 @@ public class CEducacion {
        if(sEducacion.existsByNombreE(dtoeducacion.getNombreE())){
            return new ResponseEntity(new Mensaje("El nombre que quiere agregar ya existe"), HttpStatus.BAD_REQUEST);
        }
-       Educacion educacion= new Educacion(dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE());
+       Educacion educacion= new Educacion(dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE(), dtoeducacion.getimgEducacion());
        sEducacion.save(educacion);
        return new ResponseEntity(new Mensaje("Educacion incorporada"), HttpStatus.OK);
        
    }
     
-   @PutMapping("/update/{id}")
-   public ResponseEntity<?>update(@PathVariable("id")int id, @RequestBody dtoEducacion dtoeducacion){
-       if(!sEducacion.existsById(id)){
-         return new ResponseEntity(new Mensaje ("No existe el Id"), HttpStatus.NOT_FOUND);  
-       }
-       
-       if(sEducacion.existsByNombreE(dtoeducacion.getNombreE())&& sEducacion.getByNombre(dtoeducacion.getNombreE()).get().getId() !=id){
-         return new ResponseEntity(new Mensaje ("El nombre que quiere agregar ya existe"), HttpStatus.BAD_REQUEST);    
-       }
-       if(StringUtils.isBlank(dtoeducacion.getNombreE())){
-        return new ResponseEntity(new Mensaje ("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);     
-      }
-       
-       Educacion educacion = sEducacion.getOne(id).get();
-       educacion.setNombreE(dtoeducacion.getNombreE());
-       educacion.setDescripcionE(dtoeducacion.getDescripcionE());
-       
-       sEducacion.save(educacion);
-       
-       return new ResponseEntity(new Mensaje ("Educacion actualizada"), HttpStatus.OK);     
-   }
+   @PutMapping("/edit")
+    public ResponseEntity<Educacion>editarProyecto(@RequestBody Educacion educacion){
+        Educacion updateEducacion=sEducacion.saveEducacion(educacion);
+        return new ResponseEntity<>(updateEducacion, HttpStatus.OK);
     
     
     
+ }
 }

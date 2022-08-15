@@ -39,6 +39,13 @@ public class Seducacion {
         rEducacion.deleteById(id);
     }
     
+    
+    public Educacion saveEducacion(Educacion educacion) {
+       Educacion editEducacion= rEducacion.save(educacion);
+       return editEducacion;
+        
+    }
+    
     public boolean existsById(int id){
         return rEducacion.existsById(id);
     }

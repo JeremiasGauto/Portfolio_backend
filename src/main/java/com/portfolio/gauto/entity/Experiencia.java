@@ -17,13 +17,15 @@ public class Experiencia {
     
     private String nombreE;
     private String descripcionE;
+    private String imgExperiencia;
 
     public Experiencia() {
     }
 
-    public Experiencia(String nombreE, String descripcionE) {
+    public Experiencia(String nombreE, String descripcionE, String imgExperiencia) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
+        this.imgExperiencia= imgExperiencia;
     }
 
     public int getId() {
@@ -49,6 +51,16 @@ public class Experiencia {
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
     }
+
+    public String getImgExperiencia() {
+        return imgExperiencia;
+    }
+
+    public void setImgExperiencia(String imgExperiencia) {
+        this.imgExperiencia = imgExperiencia;
+    }
+
+    
 
    
     

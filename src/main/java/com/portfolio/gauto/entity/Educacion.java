@@ -18,18 +18,20 @@ public class Educacion {
     
     private String nombreE;
     private String descripcionE;
+    private String imgEducacion;
 
     public Educacion() {
     }
 
-    public Educacion(String nombreE, String descripcionE) {
+    public Educacion(String nombreE, String descripcionE, String imgEducacion) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
+        this.imgEducacion = imgEducacion;
     }
 
     public int getId() {
         return id;
-    } 
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -50,6 +52,16 @@ public class Educacion {
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
     }
+
+    public String getImgEducacion() {
+        return imgEducacion;
+    }
+
+    public void setImgEducacion(String imgEducacion) {
+        this.imgEducacion = imgEducacion;
+    }
+
+    
     
     
 }
